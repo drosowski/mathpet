@@ -1,11 +1,15 @@
 package com.rosowski.mathpet;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,6 +29,12 @@ public class AdditionActivity extends AppCompatActivity {
         gotoNextLevel();
     }
 
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        gotoNextLevel();
+    }
+
     private void gotoNextLevel() {
         if (!levels.hasNextLevel()) {
             return;
@@ -37,7 +47,9 @@ public class AdditionActivity extends AppCompatActivity {
         if(currentRound == NUM_ROUNDS) {
             showToast("Du hast den Level geschafft! Es geht weiter im nächsten Level...");
             currentRound = 0;
-            gotoNextLevel();
+            Intent intent = new Intent(this, RewardActivity.class);
+            startActivity(intent);
+            return;
         }
 
         currentRound++;
@@ -54,10 +66,10 @@ public class AdditionActivity extends AppCompatActivity {
     }
 
     public void checkAnswer(View view) {
-        EditText answerField = (EditText) findViewById(R.id.answer);
-        Editable answerText = answerField.getText();
-        int answer = Integer.valueOf(answerText.toString());
-
+        int answer = getAnswer();
+        if(answer == -1) {
+            return;
+        }
         if (currentProblem.checkAnswer(answer)) {
             showToast("Richtig!");
             showNextProblem();
@@ -65,6 +77,20 @@ public class AdditionActivity extends AppCompatActivity {
             showToast("Leider falsch. Probier es nochmal!");
             renderProblem();
         }
+    }
+
+    private int getAnswer() {
+        EditText answerField = (EditText) findViewById(R.id.answer);
+        Editable answerText = answerField.getText();
+        int answer = -1;
+        try {
+            answer = Integer.valueOf(answerText.toString());
+        }
+        catch(NumberFormatException ex) {
+            showToast("Keine Zahl angegeben!");
+        }
+
+        return answer;
     }
 
     private void showToast(String msg) {

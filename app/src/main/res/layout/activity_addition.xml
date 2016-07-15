@@ -22,6 +22,8 @@
         android:layout_toRightOf="@id/problem"
         android:layout_toEndOf="@id/problem"
         android:inputType="number"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         android:id="@+id/answer"/>
     <Button
         android:layout_width="wrap_content"
