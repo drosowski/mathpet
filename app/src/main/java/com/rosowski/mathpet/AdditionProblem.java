@@ -24,4 +24,20 @@ public class AdditionProblem {
         int sum = summands.left + summands.right;
         return answer == sum;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        AdditionProblem that = (AdditionProblem) o;
+
+        return summands != null ? summands.equals(that.summands) : that.summands == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        return summands != null ? summands.hashCode() : 0;
+    }
 }
