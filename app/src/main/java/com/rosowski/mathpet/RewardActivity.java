@@ -1,22 +1,24 @@
 package com.rosowski.mathpet;
 
-import android.content.Context;
 import android.content.res.AssetManager;
-import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import java.io.IOException;
 import java.util.Random;
 
 public class RewardActivity extends AppCompatActivity {
+
+    private final ToastRenderer toast;
+
+    public RewardActivity() {
+        this.toast = new ToastRenderer();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,9 +37,8 @@ public class RewardActivity extends AppCompatActivity {
             int index = random.nextInt(files.length);
             Drawable drawable = Drawable.createFromStream(assets.open("animals/" + files[index]), null);
             imageView.setImageDrawable(drawable);
-        }
-        catch(IOException ex) {
-            showToast("Fehler beim Laden der Bilder!");
+        } catch (IOException ex) {
+            toast.show(getApplicationContext(), "Fehler beim Laden der Bilder!");
             this.finish();
         }
 
@@ -49,12 +50,5 @@ public class RewardActivity extends AppCompatActivity {
     public boolean onTouchEvent(MotionEvent event) {
         this.finish();
         return true;
-    }
-
-    private void showToast(String msg) {
-        Context context = getApplicationContext();
-        int duration = Toast.LENGTH_SHORT;
-        Toast toast = Toast.makeText(context, msg, duration);
-        toast.show();
     }
 }

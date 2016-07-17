@@ -1,25 +1,26 @@
 package com.rosowski.mathpet;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class AdditionActivity extends AppCompatActivity {
 
     private static final int NUM_ROUNDS = 10;
+    private final ToastRenderer toast;
+
     private Levels levels;
     private AdditionProblem currentProblem;
     private Levels.Level currentLevel;
     private int currentRound = 0;
+
+    public AdditionActivity() {
+        this.toast = new ToastRenderer();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,8 +45,8 @@ public class AdditionActivity extends AppCompatActivity {
     }
 
     public void showNextProblem() {
-        if(currentRound == NUM_ROUNDS) {
-            showToast("Du hast den Level geschafft! Es geht weiter im nächsten Level...");
+        if (currentRound == NUM_ROUNDS) {
+            toast.show(getApplicationContext(), "Du hast den Level geschafft! Es geht weiter im nächsten Level...");
             currentRound = 0;
             Intent intent = new Intent(this, RewardActivity.class);
             startActivity(intent);
@@ -67,14 +68,14 @@ public class AdditionActivity extends AppCompatActivity {
 
     public void checkAnswer(View view) {
         int answer = getAnswer();
-        if(answer == -1) {
+        if (answer == -1) {
             return;
         }
         if (currentProblem.checkAnswer(answer)) {
-            showToast("Richtig!");
+            toast.show(getApplicationContext(), "Richtig!");
             showNextProblem();
         } else {
-            showToast("Leider falsch. Probier es nochmal!");
+            toast.show(getApplicationContext(), "Leider falsch. Probier es nochmal!");
             renderProblem();
         }
     }
@@ -85,18 +86,10 @@ public class AdditionActivity extends AppCompatActivity {
         int answer = -1;
         try {
             answer = Integer.valueOf(answerText.toString());
-        }
-        catch(NumberFormatException ex) {
-            showToast("Keine Zahl angegeben!");
+        } catch (NumberFormatException ex) {
+            toast.show(getApplicationContext(), "Keine Zahl angegeben!");
         }
 
         return answer;
-    }
-
-    private void showToast(String msg) {
-        Context context = getApplicationContext();
-        int duration = Toast.LENGTH_SHORT;
-        Toast toast = Toast.makeText(context, msg, duration);
-        toast.show();
     }
 }
