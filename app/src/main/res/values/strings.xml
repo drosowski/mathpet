@@ -3,4 +3,6 @@
     <string name="button_plus">Plus</string>
     <string name="button_minus">Minus</string>
     <string name="button_answer">Antwort</string>
+    <string name="current_level">Level</string>
+    <string name="current_round">Runde</string>
 </resources>

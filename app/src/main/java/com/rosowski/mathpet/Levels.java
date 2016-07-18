@@ -14,10 +14,9 @@ public class Levels {
     private int currentLevel = -1;
 
     public Levels() {
-        levels.add(new Level(10));
-        levels.add(new Level(20));
-        levels.add(new Level(100));
-        levels.add(new Level(1000));
+        levels.add(new Level(1, 10));
+        levels.add(new Level(2, 20));
+        levels.add(new Level(3, 100));
     }
 
     public Level getNextLevel() {
@@ -30,10 +29,18 @@ public class Levels {
         return currentLevel + 1 < levels.size();
     }
 
+    public Level getLevel(int levelNo) {
+        Preconditions.checkState(levelNo > 0, "Level to get most be a positive number!");
+        currentLevel = levelNo - 1;
+        return levels.get(currentLevel);
+    }
+
     public static class Level {
         public final int bound;
+        public final int index;
 
-        private Level(int bound) {
+        private Level(int index, int bound) {
+            this.index = index;
             this.bound = bound;
         }
     }

@@ -1,6 +1,8 @@
 package com.rosowski.mathpet;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
@@ -12,28 +14,55 @@ public class AdditionActivity extends AppCompatActivity {
 
     private static final int NUM_ROUNDS = 10;
     private final ToastRenderer toast;
+    private SharedPreferences sharedPref;
 
     private Levels levels;
     private AdditionProblem currentProblem;
     private Levels.Level currentLevel;
     private int currentRound = 0;
+    private int savedLevel = 0;
 
     public AdditionActivity() {
         this.toast = new ToastRenderer();
+        this.levels = new Levels();
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addition);
-        levels = new Levels();
-        gotoNextLevel();
+        sharedPref = getPreferences(Context.MODE_PRIVATE);
+
+        currentRound = sharedPref.getInt(getString(R.string.current_round), 0);
+        savedLevel = sharedPref.getInt(getString(R.string.current_level), 0);
+
+        if(currentRound == 0 && savedLevel == 0) {
+            gotoNextLevel();
+        }
+        else {
+            currentLevel = levels.getLevel(savedLevel);
+            currentProblem = new AdditionProblem(currentLevel.bound);
+            renderProblem();
+        }
+    }
+
+    private void renderProgress() {
+        TextView level = (TextView) findViewById(R.id.currentLevel);
+        level.setText(String.format("Level %d", currentLevel.index));
+        TextView progress = (TextView) findViewById(R.id.progress);
+        progress.setText(String.format("Aufgabe %d von %d", currentRound, NUM_ROUNDS));
     }
 
     @Override
     protected void onRestart() {
         super.onRestart();
         gotoNextLevel();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        saveProgress();
     }
 
     private void gotoNextLevel() {
@@ -58,12 +87,20 @@ public class AdditionActivity extends AppCompatActivity {
         renderProblem();
     }
 
+    private void saveProgress() {
+        SharedPreferences.Editor prefEditor = sharedPref.edit();
+        prefEditor.putInt(getString(R.string.current_level), currentLevel.index);
+        prefEditor.putInt(getString(R.string.current_round), currentRound);
+        prefEditor.commit();
+    }
+
     private void renderProblem() {
         Tuple numbers = currentProblem.getNumbers();
         TextView problem = (TextView) findViewById(R.id.problem);
         problem.setText(numbers.left + " + " + numbers.right + " = ");
         EditText answerField = (EditText) findViewById(R.id.answer);
         answerField.setText("");
+        renderProgress();
     }
 
     public void checkAnswer(View view) {
