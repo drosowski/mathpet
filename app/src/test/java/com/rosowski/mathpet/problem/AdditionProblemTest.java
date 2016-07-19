@@ -1,11 +1,9 @@
 package com.rosowski.mathpet.problem;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 import org.junit.Test;
-
-import com.rosowski.mathpet.problem.AdditionProblem;
-import com.rosowski.mathpet.problem.MathProblem;
-
-import static org.junit.Assert.*;
 
 /**
  * Created by danielrosowski on 13.07.16.
@@ -29,4 +27,11 @@ public class AdditionProblemTest {
         assertFalse(additionProblem.checkAnswer(bound * 2));
         assertTrue(additionProblem.checkAnswer(numbers.left + numbers.right));
     }
+    
+    @Test
+	public void should_render_correctly() throws Exception {
+    	MathProblem additionProblem = new AdditionProblem(10);
+    	String render = additionProblem.render();
+    	assertTrue(render.matches("\\d\\s\\+\\s\\d\\s=\\s"));
+	}
 }

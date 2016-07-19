@@ -6,4 +6,5 @@ public interface MathProblem {
 
 	boolean checkAnswer(int answer);
 
+	String render();
 }

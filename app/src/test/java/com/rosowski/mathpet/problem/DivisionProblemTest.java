@@ -34,4 +34,11 @@ public class DivisionProblemTest {
         assertFalse(problem.checkAnswer(bound * 2));
         assertTrue(problem.checkAnswer(numbers.left / numbers.right));
     }
+    
+    @Test
+	public void should_render_correctly() throws Exception {
+    	MathProblem problem = new DivisionProblem(10);
+    	String render = problem.render();
+    	assertTrue(render.matches("\\d+\\s:\\s\\d\\s=\\s"));
+	}    
 }

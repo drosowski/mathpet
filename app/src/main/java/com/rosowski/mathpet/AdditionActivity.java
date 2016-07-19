@@ -2,17 +2,6 @@ package com.rosowski.mathpet;
 
 import com.rosowski.mathpet.problem.AdditionProblem;
 import com.rosowski.mathpet.problem.MathProblem;
-import com.rosowski.mathpet.problem.Tuple;
-
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.text.Editable;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.TextView;
 
 public class AdditionActivity extends AppCompatActivity {
 
@@ -99,9 +88,8 @@ public class AdditionActivity extends AppCompatActivity {
     }
 
     private void renderProblem() {
-        Tuple numbers = currentProblem.getNumbers();
         TextView problem = (TextView) findViewById(R.id.problem);
-        problem.setText(numbers.left + " + " + numbers.right + " = ");
+        problem.setText(currentProblem.render());
         EditText answerField = (EditText) findViewById(R.id.answer);
         answerField.setText("");
         renderProgress();

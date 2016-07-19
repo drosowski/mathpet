@@ -23,5 +23,26 @@ public class MultiplicationProblem implements MathProblem {
 		int product = factors.left * factors.right;
 		return product == answer;
 	}
+	
+	@Override
+	public String render() {
+		return String.format("%d * %d = ", factors.left, factors.right);
+	}
+	
+    
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
 
+        MultiplicationProblem that = (MultiplicationProblem) o;
+
+        return factors != null ? factors.equals(that.factors) : that.factors == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        return factors != null ? factors.hashCode() : 0;
+    }
 }

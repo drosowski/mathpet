@@ -5,9 +5,6 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import com.rosowski.mathpet.problem.MathProblem;
-import com.rosowski.mathpet.problem.SubstractionProblem;
-
 public class SubstractionProblemTest {
 
     @Test
@@ -34,4 +31,11 @@ public class SubstractionProblemTest {
         assertFalse(substractionProblem.checkAnswer(bound * 2));
         assertTrue(substractionProblem.checkAnswer(numbers.left - numbers.right));
     }	
+    
+    @Test
+	public void should_render_correctly() throws Exception {
+    	MathProblem problem = new SubstractionProblem(10);
+    	String render = problem.render();
+    	assertTrue(render.matches("\\d+\\s\\-\\s\\d\\s=\\s"));
+	}     
 }

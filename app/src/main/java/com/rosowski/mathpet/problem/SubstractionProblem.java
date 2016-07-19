@@ -27,5 +27,26 @@ public class SubstractionProblem implements MathProblem {
 		int difference = minuends.left - minuends.right;
 		return answer == difference;
 	}
+	
+	@Override
+	public String render() {
+		return String.format("%d - %d = ", minuends.left, minuends.right);
+	}
+	
+    
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
 
+        SubstractionProblem that = (SubstractionProblem) o;
+
+        return minuends != null ? minuends.equals(that.minuends) : that.minuends == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        return minuends != null ? minuends.hashCode() : 0;
+    }
 }
