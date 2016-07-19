@@ -3,7 +3,7 @@ package com.rosowski.mathpet;
 import com.rosowski.mathpet.problem.AdditionProblem;
 import com.rosowski.mathpet.problem.MathProblem;
 
-public class AdditionActivity extends AppCompatActivity {
+public class MathProblemActivity extends AppCompatActivity {
 
     private static final int NUM_ROUNDS = 10;
     private final ToastRenderer toast;
@@ -15,7 +15,7 @@ public class AdditionActivity extends AppCompatActivity {
     private int currentRound = 0;
     private int savedLevel = 0;
 
-    public AdditionActivity() {
+    public MathProblemActivity() {
         this.toast = new ToastRenderer();
         this.levels = new Levels();
     }

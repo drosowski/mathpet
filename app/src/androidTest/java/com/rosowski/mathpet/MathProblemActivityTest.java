@@ -21,16 +21,16 @@ import static org.junit.Assert.assertFalse;
  * Created by danielrosowski on 17.07.16.
  */
 @RunWith(AndroidJUnit4.class)
-public class AdditionActivityTest {
+public class MathProblemActivityTest {
 
     @Rule
-    public ActivityTestRule<AdditionActivity> activityRule = new ActivityTestRule<>(
-            AdditionActivity.class);
+    public ActivityTestRule<MathProblemActivity> activityRule = new ActivityTestRule<>(
+            MathProblemActivity.class);
 
     @Test
     public void should_repeat_round_for_wrong_answer() throws Exception {
         // given
-        AdditionActivity activity = activityRule.getActivity();
+        MathProblemActivity activity = activityRule.getActivity();
         MathProblem currentProblem = (MathProblem) getField(activity, "currentProblem");
         Levels.Level currentLevel = (Levels.Level) getField(activity, "currentLevel");
 
@@ -47,7 +47,7 @@ public class AdditionActivityTest {
     @Test
     public void should_proceed_to_next_round_for_correct_answer() throws Exception {
         // given
-        AdditionActivity activity = activityRule.getActivity();
+        MathProblemActivity activity = activityRule.getActivity();
         MathProblem currentProblem = (MathProblem) getField(activity, "currentProblem");
         Tuple numbers = currentProblem.getNumbers();
 
@@ -61,7 +61,7 @@ public class AdditionActivityTest {
         assertFalse(nextProblem.equals(currentProblem));
     }
 
-    private void clickAnswerButton(AdditionActivity activity) throws InterruptedException {
+    private void clickAnswerButton(MathProblemActivity activity) throws InterruptedException {
         Button button = (Button) activity.findViewById(R.id.sendAnswer);
         Runnable buttonClick = buttonClick(button);
         synchronized (buttonClick) {
@@ -70,7 +70,7 @@ public class AdditionActivityTest {
         }
     }
 
-    private void setAnswer(AdditionActivity activity, String answerText) {
+    private void setAnswer(MathProblemActivity activity, String answerText) {
         final EditText editText = (EditText) activity.findViewById(R.id.answer);
         activity.runOnUiThread(() -> editText.setText(answerText));
     }
@@ -88,7 +88,7 @@ public class AdditionActivityTest {
         return buttonClick;
     }
 
-    private Object getField(AdditionActivity activity, String fieldName) {
+    private Object getField(MathProblemActivity activity, String fieldName) {
         try {
             Field field = activity.getClass().getDeclaredField(fieldName);
             field.setAccessible(true);

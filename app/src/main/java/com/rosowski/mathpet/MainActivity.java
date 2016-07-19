@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void startPlus(View view) {
-        Intent intent = new Intent(this, AdditionActivity.class);
+        Intent intent = new Intent(this, MathProblemActivity.class);
         startActivity(intent);
     }
 }
