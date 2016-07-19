@@ -2,8 +2,6 @@ package com.rosowski.mathpet.problem;
 
 import java.util.Random;
 
-import com.rosowski.mathpet.Tuple;
-
 public class MultiplicationProblem implements MathProblem {
 
     private Tuple factors;

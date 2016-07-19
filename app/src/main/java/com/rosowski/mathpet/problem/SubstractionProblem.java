@@ -2,8 +2,6 @@ package com.rosowski.mathpet.problem;
 
 import java.util.Random;
 
-import com.rosowski.mathpet.Tuple;
-
 public class SubstractionProblem implements MathProblem {
 
 	private Tuple minuends;

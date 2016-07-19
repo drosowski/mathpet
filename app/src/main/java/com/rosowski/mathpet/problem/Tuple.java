@@ -1,4 +1,4 @@
-package com.rosowski.mathpet;
+package com.rosowski.mathpet.problem;
 
 /**
  * Created by danielrosowski on 13.07.16.

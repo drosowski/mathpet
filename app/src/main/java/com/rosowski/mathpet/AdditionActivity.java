@@ -2,6 +2,7 @@ package com.rosowski.mathpet;
 
 import com.rosowski.mathpet.problem.AdditionProblem;
 import com.rosowski.mathpet.problem.MathProblem;
+import com.rosowski.mathpet.problem.Tuple;
 
 import android.content.Context;
 import android.content.Intent;

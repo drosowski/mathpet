@@ -2,8 +2,6 @@ package com.rosowski.mathpet.problem;
 
 import java.util.Random;
 
-import com.rosowski.mathpet.Tuple;
-
 public class DivisionProblem implements MathProblem {
 
 	private Tuple dividends;
