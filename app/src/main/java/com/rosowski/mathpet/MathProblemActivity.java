@@ -1,12 +1,13 @@
 package com.rosowski.mathpet;
 
-import com.rosowski.mathpet.problem.AdditionProblem;
 import com.rosowski.mathpet.problem.MathProblem;
+import com.rosowski.mathpet.problem.ProblemFactory;
 
 public class MathProblemActivity extends AppCompatActivity {
 
     private static final int NUM_ROUNDS = 10;
     private final ToastRenderer toast;
+    private ProblemFactory problemFactory;
     private SharedPreferences sharedPref;
 
     private Levels levels;
@@ -14,27 +15,30 @@ public class MathProblemActivity extends AppCompatActivity {
     private Levels.Level currentLevel;
     private int currentRound = 0;
     private int savedLevel = 0;
+	private String problemClass;
 
     public MathProblemActivity() {
         this.toast = new ToastRenderer();
         this.levels = new Levels();
+        this.problemFactory = new ProblemFactory();
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addition);
+        this.problemClass = getIntent().getStringExtra(MainActivity.PROBLEM_CLASS);
         sharedPref = getPreferences(Context.MODE_PRIVATE);
 
-        currentRound = sharedPref.getInt(getString(R.string.current_round), 0);
-        savedLevel = sharedPref.getInt(getString(R.string.current_level), 0);
+        currentRound = sharedPref.getInt(getString(R.string.current_round) + problemClass, 0);
+        savedLevel = sharedPref.getInt(getString(R.string.current_level) + problemClass, 0);
 
         if(currentRound == 0 && savedLevel == 0) {
             gotoNextLevel();
         }
         else {
             currentLevel = levels.getLevel(savedLevel);
-            currentProblem = new AdditionProblem(currentLevel.bound);
+            currentProblem = problemFactory.createFor(problemClass, currentLevel.bound);
             renderProblem();
         }
     }
@@ -76,14 +80,14 @@ public class MathProblemActivity extends AppCompatActivity {
         }
 
         currentRound++;
-        currentProblem = new AdditionProblem(currentLevel.bound);
+        currentProblem = problemFactory.createFor(problemClass, currentLevel.bound);
         renderProblem();
     }
 
     private void saveProgress() {
         SharedPreferences.Editor prefEditor = sharedPref.edit();
-        prefEditor.putInt(getString(R.string.current_level), currentLevel.index);
-        prefEditor.putInt(getString(R.string.current_round), currentRound);
+        prefEditor.putInt(getString(R.string.current_level) + problemClass, currentLevel.index);
+        prefEditor.putInt(getString(R.string.current_round) + problemClass, currentRound);
         prefEditor.commit();
     }
 
