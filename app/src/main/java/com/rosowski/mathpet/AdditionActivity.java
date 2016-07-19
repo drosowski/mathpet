@@ -17,7 +17,7 @@ public class AdditionActivity extends AppCompatActivity {
     private SharedPreferences sharedPref;
 
     private Levels levels;
-    private AdditionProblem currentProblem;
+    private MathProblem currentProblem;
     private Levels.Level currentLevel;
     private int currentRound = 0;
     private int savedLevel = 0;

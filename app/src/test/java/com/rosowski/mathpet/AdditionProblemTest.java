@@ -20,7 +20,7 @@ public class AdditionProblemTest {
     @Test
     public void should_check_answer_correctly() {
         int bound = 10;
-        AdditionProblem additionProblem = new AdditionProblem(bound);
+        MathProblem additionProblem = new AdditionProblem(bound);
         Tuple numbers = additionProblem.getNumbers();
 
         assertFalse(additionProblem.checkAnswer(bound * 2));

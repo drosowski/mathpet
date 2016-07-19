@@ -5,7 +5,7 @@ import java.util.Random;
 /**
  * Created by danielrosowski on 13.07.16.
  */
-public class AdditionProblem {
+public class AdditionProblem implements MathProblem {
 
     private Tuple summands;
 
@@ -16,11 +16,19 @@ public class AdditionProblem {
         summands = new Tuple(summandLeft, summandRight);
     }
 
-    public Tuple getNumbers() {
+    /* (non-Javadoc)
+	 * @see com.rosowski.mathpet.MathProblem#getNumbers()
+	 */
+    @Override
+	public Tuple getNumbers() {
         return summands;
     }
 
-    public boolean checkAnswer(int answer) {
+    /* (non-Javadoc)
+	 * @see com.rosowski.mathpet.MathProblem#checkAnswer(int)
+	 */
+    @Override
+	public boolean checkAnswer(int answer) {
         int sum = summands.left + summands.right;
         return answer == sum;
     }

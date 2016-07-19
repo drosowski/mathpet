@@ -28,7 +28,7 @@ public class AdditionActivityTest {
     public void should_repeat_round_for_wrong_answer() throws Exception {
         // given
         AdditionActivity activity = activityRule.getActivity();
-        AdditionProblem currentProblem = (AdditionProblem) getField(activity, "currentProblem");
+        MathProblem currentProblem = (MathProblem) getField(activity, "currentProblem");
         Levels.Level currentLevel = (Levels.Level) getField(activity, "currentLevel");
 
         // when
@@ -37,7 +37,7 @@ public class AdditionActivityTest {
         clickAnswerButton(activity);
 
         // then
-        AdditionProblem nextProblem = (AdditionProblem) getField(activity, "currentProblem");
+        MathProblem nextProblem = (MathProblem) getField(activity, "currentProblem");
         assertEquals(nextProblem, currentProblem);
     }
 
@@ -45,7 +45,7 @@ public class AdditionActivityTest {
     public void should_proceed_to_next_round_for_correct_answer() throws Exception {
         // given
         AdditionActivity activity = activityRule.getActivity();
-        AdditionProblem currentProblem = (AdditionProblem) getField(activity, "currentProblem");
+        MathProblem currentProblem = (MathProblem) getField(activity, "currentProblem");
         Tuple numbers = currentProblem.getNumbers();
 
         // when
@@ -54,7 +54,7 @@ public class AdditionActivityTest {
         clickAnswerButton(activity);
 
         // then
-        AdditionProblem nextProblem = (AdditionProblem) getField(activity, "currentProblem");
+        MathProblem nextProblem = (MathProblem) getField(activity, "currentProblem");
         assertFalse(nextProblem.equals(currentProblem));
     }
 
