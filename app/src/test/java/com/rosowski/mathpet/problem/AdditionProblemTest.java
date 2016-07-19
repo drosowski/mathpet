@@ -1,6 +1,10 @@
-package com.rosowski.mathpet;
+package com.rosowski.mathpet.problem;
 
 import org.junit.Test;
+
+import com.rosowski.mathpet.Tuple;
+import com.rosowski.mathpet.problem.AdditionProblem;
+import com.rosowski.mathpet.problem.MathProblem;
 
 import static org.junit.Assert.*;
 

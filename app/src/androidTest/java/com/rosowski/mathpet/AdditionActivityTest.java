@@ -9,6 +9,8 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import com.rosowski.mathpet.problem.MathProblem;
+
 import java.lang.reflect.Field;
 
 import static org.junit.Assert.assertEquals;

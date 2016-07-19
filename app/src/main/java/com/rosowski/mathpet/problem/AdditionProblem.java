@@ -1,6 +1,8 @@
-package com.rosowski.mathpet;
+package com.rosowski.mathpet.problem;
 
 import java.util.Random;
+
+import com.rosowski.mathpet.Tuple;
 
 /**
  * Created by danielrosowski on 13.07.16.

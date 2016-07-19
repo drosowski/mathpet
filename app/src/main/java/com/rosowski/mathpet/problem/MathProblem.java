@@ -1,4 +1,6 @@
-package com.rosowski.mathpet;
+package com.rosowski.mathpet.problem;
+
+import com.rosowski.mathpet.Tuple;
 
 public interface MathProblem {
 

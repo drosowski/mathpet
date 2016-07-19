@@ -1,5 +1,8 @@
 package com.rosowski.mathpet;
 
+import com.rosowski.mathpet.problem.AdditionProblem;
+import com.rosowski.mathpet.problem.MathProblem;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;

@@ -1,9 +1,13 @@
-package com.rosowski.mathpet;
+package com.rosowski.mathpet.problem;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
+
+import com.rosowski.mathpet.Tuple;
+import com.rosowski.mathpet.problem.MathProblem;
+import com.rosowski.mathpet.problem.SubstractionProblem;
 
 public class SubstractionProblemTest {
 
