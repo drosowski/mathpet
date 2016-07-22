@@ -15,8 +15,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AdditionActivity"></activity>
-        <activity android:name=".RewardActivity"></activity>
+        <activity
+            android:name=".MathProblemActivity"
+            android:windowSoftInputMode="stateVisible"></activity>
+        <activity android:name=".RewardActivity" />
+        <activity android:name=".GalleryActivity"></activity>
     </application>
 
 </manifest>

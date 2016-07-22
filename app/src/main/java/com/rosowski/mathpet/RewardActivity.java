@@ -1,6 +1,5 @@
 package com.rosowski.mathpet;
 
-import android.content.res.AssetManager;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -10,7 +9,6 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import java.io.IOException;
-import java.util.Random;
 
 public class RewardActivity extends AppCompatActivity {
 
@@ -30,12 +28,11 @@ public class RewardActivity extends AppCompatActivity {
                 new ViewGroup.LayoutParams(
                         ViewGroup.LayoutParams.MATCH_PARENT,
                         ViewGroup.LayoutParams.MATCH_PARENT));
-        AssetManager assets = this.getAssets();
+
+
+        RewardManager rewardManager = new RewardManager(getApplicationContext());
         try {
-            String[] files = assets.list("animals");
-            Random random = new Random();
-            int index = random.nextInt(files.length);
-            Drawable drawable = Drawable.createFromStream(assets.open("animals/" + files[index]), null);
+            Drawable drawable = rewardManager.unlockReward(this.getAssets());
             imageView.setImageDrawable(drawable);
         } catch (IOException ex) {
             toast.show(getApplicationContext(), "Fehler beim Laden der Bilder!");

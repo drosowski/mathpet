@@ -1,8 +1,15 @@
 <resources>
     <string name="app_name">MathPet</string>
-    <string name="button_plus">Plus</string>
-    <string name="button_minus">Minus</string>
+    <string name="button_plus">Plus Rechnen</string>
+    <string name="button_minus">Minus Rechnen</string>
+    <string name="button_multiply">Mal Rechnen</string>
+    <string name="button_divide">Geteilt Rechnen</string>
+    <string name="button_gallery">Deine Bilder</string>
     <string name="button_answer">Antwort</string>
     <string name="current_level">Level</string>
     <string name="current_round">Runde</string>
+    <string name="reward_pref">reward_pref</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

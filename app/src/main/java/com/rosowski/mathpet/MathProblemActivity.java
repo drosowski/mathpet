@@ -1,5 +1,15 @@
 package com.rosowski.mathpet;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
+
 import com.rosowski.mathpet.problem.MathProblem;
 import com.rosowski.mathpet.problem.ProblemFactory;
 
@@ -15,7 +25,7 @@ public class MathProblemActivity extends AppCompatActivity {
     private Levels.Level currentLevel;
     private int currentRound = 0;
     private int savedLevel = 0;
-	private String problemClass;
+    private String problemClass;
 
     public MathProblemActivity() {
         this.toast = new ToastRenderer();
@@ -26,17 +36,16 @@ public class MathProblemActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_addition);
+        setContentView(R.layout.activity_mathproblem);
         this.problemClass = getIntent().getStringExtra(MainActivity.PROBLEM_CLASS);
         sharedPref = getPreferences(Context.MODE_PRIVATE);
 
         currentRound = sharedPref.getInt(getString(R.string.current_round) + problemClass, 0);
         savedLevel = sharedPref.getInt(getString(R.string.current_level) + problemClass, 0);
 
-        if(currentRound == 0 && savedLevel == 0) {
+        if (currentRound == 0 && savedLevel == 0) {
             gotoNextLevel();
-        }
-        else {
+        } else {
             currentLevel = levels.getLevel(savedLevel);
             currentProblem = problemFactory.createFor(problemClass, currentLevel.bound);
             renderProblem();
