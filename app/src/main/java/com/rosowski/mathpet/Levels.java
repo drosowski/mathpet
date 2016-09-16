@@ -10,13 +10,17 @@ import java.util.List;
  */
 public class Levels {
 
-    private List<Level> levels = new ArrayList<>(5);
+    private List<Level> levels = new ArrayList<>();
     private int currentLevel = -1;
 
     public Levels() {
         levels.add(new Level(1, 10));
-        levels.add(new Level(2, 20));
-        levels.add(new Level(3, 100));
+        levels.add(new Level(2, 10));
+        levels.add(new Level(3, 20));
+        levels.add(new Level(4, 20));
+        levels.add(new Level(5, 50));
+        levels.add(new Level(6, 50));
+        levels.add(new Level(7, 100));
     }
 
     public Level getNextLevel() {
