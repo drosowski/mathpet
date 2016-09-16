@@ -1,4 +1,4 @@
-package com.rosowski.mathpet;
+package com.rosowski.mathpet.reward;
 
 import android.content.Context;
 import android.content.SharedPreferences;

@@ -9,6 +9,7 @@ import com.rosowski.mathpet.problem.AdditionProblem;
 import com.rosowski.mathpet.problem.DivisionProblem;
 import com.rosowski.mathpet.problem.MultiplicationProblem;
 import com.rosowski.mathpet.problem.SubstractionProblem;
+import com.rosowski.mathpet.reward.GalleryActivity;
 
 public class MainActivity extends AppCompatActivity {
 

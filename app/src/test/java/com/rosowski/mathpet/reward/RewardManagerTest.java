@@ -1,10 +1,11 @@
-package com.rosowski.mathpet;
+package com.rosowski.mathpet.reward;
 
 import android.content.SharedPreferences;
 import android.content.res.AssetManager;
 import android.graphics.drawable.Drawable;
 
-import org.hamcrest.CoreMatchers;
+import com.rosowski.mathpet.reward.RewardManager;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.rosowski.mathpet.problem.MathProblem;
 import com.rosowski.mathpet.problem.ProblemFactory;
+import com.rosowski.mathpet.reward.RewardActivity;
 
 public class MathProblemActivity extends AppCompatActivity {
 

@@ -3,6 +3,7 @@
     package="com.rosowski.mathpet">
 
     <application
+        android:name=".MathPetApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -18,8 +19,8 @@
         <activity
             android:name=".MathProblemActivity"
             android:windowSoftInputMode="stateVisible"></activity>
-        <activity android:name=".RewardActivity" />
-        <activity android:name=".GalleryActivity"></activity>
+        <activity android:name=".reward.RewardActivity" />
+        <activity android:name=".reward.GalleryActivity"></activity>
     </application>
 
 </manifest>

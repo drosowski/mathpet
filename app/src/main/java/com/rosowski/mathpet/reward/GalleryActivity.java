@@ -1,4 +1,4 @@
-package com.rosowski.mathpet;
+package com.rosowski.mathpet.reward;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -12,6 +12,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
+
+import com.rosowski.mathpet.R;
 
 import java.io.IOException;
 import java.util.List;
