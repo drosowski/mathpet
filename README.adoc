@@ -1,0 +1,6 @@
+= MathPet
+
+MathPet ist eine Mathelern-App für Grundschulkinder, die auf einem Belohnungssystem basiert.
+Die Kinder werden aufgefordert eine Reihe bestimmter Aufgaben zu lösen und werden nach einer
+Aufgabenreihe mit einem süßen Tierbabybild belohnt. Die "verdienten" Bilder werden gespeichert und
+können sich hinterher in einer Gallery angeschaut werden.
